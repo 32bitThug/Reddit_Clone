@@ -1,0 +1,33 @@
+
+1. **`FirebaseFirestore` class:**
+   - `FirebaseFirestore` is part of the Firebase Cloud Firestore library.
+   - It represents a Firestore database and is used for interacting with the Firestore database in a Firebase project.
+   - In the provided code, it's used as `_firestore` in the `AuthRepository` class to store an instance of the Firestore database.
+
+2. **`FirebaseAuth` class:**
+   - `FirebaseAuth` is part of the Firebase Authentication library.
+   - It provides methods for user authentication, such as signing in, signing out, creating user accounts, and managing user authentication states.
+   - In the provided code, it's used as `_auth` in the `AuthRepository` class to store an instance of the Firebase Authentication service.
+
+3. **`GoogleSignIn` class:**
+   - `GoogleSignIn` is part of the `google_sign_in` library.
+   - It provides functionality for signing in with Google accounts.
+   - It allows users to sign in with their Google credentials, and the library handles the authentication process.
+   - In the provided code, it's used as `_googleSignIn` in the `AuthRepository` class to store an instance of the Google Sign-In service.
+
+4. **`GoogleSignInAccount` class:**
+   - `GoogleSignInAccount` represents a Google user account obtained through the Google Sign-In process.
+   - It contains information about the signed-in user, such as display name, email, and user ID.
+   - In the provided code, an instance of this class is used when attempting to sign in with Google.
+
+5. **`GoogleSignInAuthentication` class:**
+   - `GoogleSignInAuthentication` represents the authentication details of a Google user obtained through the Google Sign-In process.
+   - It contains an `accessToken` and an `idToken`, which can be used for authenticating with Firebase or other services.
+   - In the provided code, the `authentication` property of a `GoogleSignInAccount` is accessed to obtain this information.
+
+6. **`GoogleAuthProvider` class:**
+   - `GoogleAuthProvider` is part of the Firebase Authentication library.
+   - It provides a method, `credential`, for creating a `AuthCredential` object using Google Sign-In authentication details.
+   - In the provided code, it's used to create a credential for Firebase authentication with the obtained Google authentication details.
+
+These classes collectively enable the `signInWithGoogle` method in the `AuthRepository` class to sign in a user using their Google credentials and obtain the necessary authentication details for Firebase authentication.
