@@ -8,6 +8,7 @@ import 'package:reddit_clone/features/auth/controllers/auth_controller.dart';
 import 'package:reddit_clone/firebase_options.dart';
 import 'package:reddit_clone/models/user_model.dart';
 import 'package:reddit_clone/router.dart';
+import 'package:reddit_clone/theme/pallete.dart';
 // import 'package:reddit_clone/theme/pallete.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -47,7 +48,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           data: (data) => MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Reddit',
-            // theme: Pallete.lightModeAppTheme,
+            // theme: Pallete.darkModeAppTheme,
             routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
               // routes based on login status
               if (data != null) {

@@ -55,4 +55,11 @@ class CommunityRepository {
       throw Failure(e.toString());
     }
   }
+
+  Stream<Community> getCommunityByName(String name) {
+    return _communities
+        .doc(name)
+        .snapshots()
+        .map((event) => Community.fromMap(event.data() as Map<String,dynamic>));
+  }
 }
