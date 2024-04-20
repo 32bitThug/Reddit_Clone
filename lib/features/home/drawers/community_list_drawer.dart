@@ -9,6 +9,7 @@ import 'package:routemaster/routemaster.dart';
 
 class CommunityListDrawer extends ConsumerWidget {
   const CommunityListDrawer({super.key});
+
   void navigateToCreateCommunity(BuildContext context) {
     Routemaster.of(context).push('/create-community');
   }

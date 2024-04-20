@@ -9,7 +9,6 @@ import 'package:reddit_clone/firebase_options.dart';
 import 'package:reddit_clone/models/user_model.dart';
 import 'package:reddit_clone/router.dart';
 import 'package:reddit_clone/theme/pallete.dart';
-// import 'package:reddit_clone/theme/pallete.dart';
 import 'package:routemaster/routemaster.dart';
 
 void main() async {
