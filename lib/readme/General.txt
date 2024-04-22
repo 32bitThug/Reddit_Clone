@@ -1,0 +1,4 @@
+
+repository contains all the calls for firebase
+controller talks to  ui and repository
+http://gg.gg/scaffoldChatGPT
