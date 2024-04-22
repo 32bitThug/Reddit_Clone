@@ -4,9 +4,14 @@ import 'package:reddit_clone/core/common/loader.dart';
 import 'package:reddit_clone/core/common/sign_in_button.dart';
 import 'package:reddit_clone/core/constants/constants.dart';
 import 'package:reddit_clone/features/auth/controllers/auth_controller.dart';
+import 'package:reddit_clone/responsive/responsive.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
+
+  void signInAsGuest(WidgetRef ref, BuildContext context) {
+    ref.read(authControllerProvider.notifier).signInAsGuest(context);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +25,7 @@ class LoginScreen extends ConsumerWidget {
         centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () => signInAsGuest(ref, context),
             child: const Text(
               'Skip',
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -50,7 +55,7 @@ class LoginScreen extends ConsumerWidget {
                       height: 400,
                     ),
                   ),
-                  const SignInButton(),
+                  const Responsive(child: SignInButton()),
                 ],
               ),
             ),

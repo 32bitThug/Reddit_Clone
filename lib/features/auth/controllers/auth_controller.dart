@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone/core/utils.dart';
 import 'package:reddit_clone/features/auth/repository/auth_repository.dart';
+import 'package:reddit_clone/features/community/controller/community_controller.dart';
 import 'package:reddit_clone/models/user_model.dart';
 
 final userProvider = StateProvider<UserModel?>((ref) {
@@ -35,9 +36,19 @@ class AuthController extends StateNotifier<bool> {
   // consuming the authStateChange in repository , the User mentioned here is fluuter auth User
   Stream<User?> get authStateChange => _authRepository.authStateChange;
 
-  void signInWithGoogle(BuildContext context) async {
+  void signInWithGoogle(BuildContext context, bool isFromLogin) async {
     state = true; // loading while sign in
-    final user = await _authRepository.signInWithGoogle();
+    final user = await _authRepository.signInWithGoogle(isFromLogin);
+    state = false;
+    user.fold(
+        (l) => showSnackBar(context, l.message),
+        (userModel) =>
+            _ref.read(userProvider.notifier).update((state) => userModel));
+  }
+
+  void signInAsGuest(BuildContext context) async {
+    state = true; // loading while sign in
+    final user = await _authRepository.signInAsGuest();
     state = false;
     user.fold(
         (l) => showSnackBar(context, l.message),
@@ -51,5 +62,6 @@ class AuthController extends StateNotifier<bool> {
 
   void logout() async {
     _authRepository.logout();
+    // _ref.read(userCommunitiesProvider.)
   }
 }

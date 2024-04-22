@@ -1,23 +1,20 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone/core/common/error_text.dart';
 import 'package:reddit_clone/core/common/loader.dart';
 import 'package:reddit_clone/core/constants/constants.dart';
 import 'package:reddit_clone/core/utils.dart';
 import 'package:reddit_clone/features/auth/controllers/auth_controller.dart';
-import 'package:reddit_clone/features/community/controller/community_controller.dart';
 import 'package:reddit_clone/features/user_profile/controllers/user_profile_controller.dart';
-import 'package:reddit_clone/models/community_model.dart';
-import 'package:reddit_clone/theme/pallete.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
   final String uid;
+ 
+
   const EditProfileScreen({super.key, required this.uid});
 
   @override
@@ -28,6 +25,8 @@ class EditProfileScreen extends ConsumerStatefulWidget {
 class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   File? bannerFile;
   File? profileFile;
+   Uint8List? bannerWebFile;
+  Uint8List? profileWebFile;
   late TextEditingController nameController;
   @override
   void initState() {
@@ -60,16 +59,19 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   }
 
   void saveProfile() {
-    ref.read(userProfileControllerontrollerProvider.notifier).editProfile(
-        profileFile: profileFile,
-        bannerFile: bannerFile,
-        context: context,
-        name: nameController.text.trim());
+    ref.read(userProfileControllerProvider.notifier).editCommunity(
+          profileFile: profileFile,
+          bannerFile: bannerFile,
+          context: context,
+          name: nameController.text.trim(),
+           bannerWebFile: bannerWebFile,
+        profileWebFile:profileWebFile,
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(userProfileControllerontrollerProvider);
+    final isLoading = ref.watch(userProfileControllerProvider);
     return ref.watch(getuserDataProvider(widget.uid)).when(
           data: (user) => Scaffold(
             // backgroundColor: Pallete.darkModeAppTheme.backgroundColor,

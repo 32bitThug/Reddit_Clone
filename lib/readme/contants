@@ -23,7 +23,7 @@ The `!` symbol, called the "bang" operator, is used for null-aware operations in
   String? nullableString = "Hello";
   String nonNullableString = nullableString!;
   ```
-  In this example, `nullableString!` asserts that `nullableString` is non-null and allows you to assign its value to `nonNullableString`. However, if `nullableString` is `null`, a runtime error will occur.
+  In this example, `nullablecpString!` asserts that `nullableString` is non-null and allows you to assign its value to `nonNullableString`. However, if `nullableString` is `null`, a runtime error will occur.
 
 
 

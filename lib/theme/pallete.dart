@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reddit_clone/core/enum/enum.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final themeNotifierProvider =
+    StateNotifierProvider<ThemeNotifier, ThemeData>((ref) {
+  return ThemeNotifier();
+});
 
 class Pallete {
   // Colors
@@ -48,4 +56,43 @@ class Pallete {
     primaryColor: redColor,
     colorScheme: const ColorScheme.light().copyWith(background: whiteColor),
   );
+}
+
+
+class ThemeNotifier extends StateNotifier<ThemeData> {
+  
+  CustomTheme _mode;
+  ThemeNotifier({CustomTheme mode = CustomTheme.dark})
+      : _mode = mode,
+        super(Pallete.darkModeAppTheme) {
+    getTheme();
+  }
+  
+  CustomTheme get mode => _mode;
+
+  void getTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final theme = prefs.getString('theme');
+    if (theme == 'light') {
+      _mode = CustomTheme.light;
+      state = Pallete.lightModeAppTheme;
+    } else {
+      _mode = CustomTheme.dark;
+      state = Pallete.darkModeAppTheme;
+    }
+  }
+
+  void toggleTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // final theme = prefs.getString('theme');
+    if (_mode == CustomTheme.dark) {
+      _mode = CustomTheme.light;
+      state = Pallete.lightModeAppTheme;
+      prefs.setString('theme', 'light');
+    } else {
+      _mode = CustomTheme.dark;
+      state = Pallete.darkModeAppTheme;
+      prefs.setString('theme', 'dark');
+    }
+  }
 }
