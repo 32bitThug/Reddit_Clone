@@ -1,8 +1,8 @@
 enum CustomTheme {
   light,
   dark,
-
 }
+
 enum UserKarma {
   comment(1),
   textPost(2),
@@ -14,4 +14,3 @@ enum UserKarma {
   final int karma;
   const UserKarma(this.karma);
 }
-

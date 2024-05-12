@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reddit_clone/features/feed/feed_screen.dart';
 import 'package:reddit_clone/features/post/screens/add_post_screen.dart';
-// import 'package:reddit_tutorial/features/feed/feed_screen.dart';
-// import 'package:reddit_tutorial/features/home/screens/home_screen.dart';
-// import 'package:reddit_tutorial/features/post/screens/add_post_screen.dart';
-
 class Constants {
   static const logoPath = 'assets/images/logo.png';
   static const loginEmotePath = 'assets/images/loginEmote.png';

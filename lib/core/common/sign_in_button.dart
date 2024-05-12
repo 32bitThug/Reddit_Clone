@@ -4,7 +4,7 @@ import 'package:reddit_clone/core/constants/constants.dart';
 import 'package:reddit_clone/features/auth/controllers/auth_controller.dart';
 
 class SignInButton extends ConsumerWidget {
-  final isFromLogin;
+  final bool isFromLogin;
 
   const SignInButton({super.key, this.isFromLogin = true});
 
